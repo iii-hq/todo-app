@@ -140,6 +140,7 @@ app.listen(5173)
 ```
 
 The `--ssr` flag:
+
 - Externalizes dependencies by default
 - Outputs for Node.js consumption
 
@@ -160,7 +161,7 @@ Control which deps get bundled vs externalized:
 ```ts
 export default defineConfig({
   ssr: {
-    noExternal: ['some-package'],  // Bundle this dep
+    noExternal: ['some-package'], // Bundle this dep
     external: ['another-package'], // Externalize this dep
   },
 })
