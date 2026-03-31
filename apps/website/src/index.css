@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import '@heroui/styles';
+
+body,
+button {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #f5f5f5;
+}
