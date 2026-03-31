@@ -1,0 +1,66 @@
+modules:
+  - class: modules::worker::WorkerModule
+    config:
+      port: 49134
+
+  - class: modules::worker::WorkerModule
+    config:
+      host: 0.0.0.0
+      port: 3111
+      rbac:
+        expose_functions:
+          - match("todos::create")
+          - match("todos::list")
+          - match("todos::get")
+          - match("todos::delete")
+
+  - class: modules::shell::ExecModule
+    config:
+      exec:
+        - pnpm dev
+
+  - class: modules::stream::StreamModule
+    config:
+      port: 3112
+      host: 0.0.0.0
+      adapter:
+        class: modules::stream::adapters::KvStore
+        config:
+          store_method: file_based
+          file_path: ./data/stream_store
+
+  - class: modules::api::RestApiModule
+    config:
+      port: 3113
+      host: 127.0.0.1
+      default_timeout: 30000
+      concurrency_request_limit: 1024
+      cors:
+        allowed_origins:
+          - '*'
+        allowed_methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+  - class: modules::observability::OtelModule
+    config:
+      enabled: ${OTEL_ENABLED:true}
+      service_name: ${OTEL_SERVICE_NAME:iii-test}
+      service_version: ${SERVICE_VERSION:0.2.0}
+      exporter: ${OTEL_EXPORTER_TYPE:memory}
+      endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:http://localhost:4317}
+      sampling_ratio: 1.0
+      memory_max_spans: ${OTEL_MEMORY_MAX_SPANS:10000}
+      metrics_enabled: true
+      metrics_exporter: ${OTEL_METRICS_EXPORTER:memory}
+      metrics_retention_seconds: 3600
+      metrics_max_count: 10000
+      logs_enabled: ${OTEL_LOGS_ENABLED:true}
+      logs_exporter: ${OTEL_LOGS_EXPORTER:memory}
+      logs_max_count: ${OTEL_LOGS_MAX_COUNT:1000}
+      logs_retention_seconds: ${OTEL_LOGS_RETENTION_SECONDS:3600}
+      logs_sampling_ratio: ${OTEL_LOGS_SAMPLING_RATIO:1.0}
+      logs_console_output: ${OTEL_LOGS_CONSOLE_OUTPUT:false}

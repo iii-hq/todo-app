@@ -110,6 +110,24 @@ export default defineConfig({
           'no-unused-vars': 'warn',
         },
       },
+      {
+        files: ['apps/api/**/*.ts'],
+        globals: {
+          process: 'readonly',
+          setTimeout: 'readonly',
+          clearTimeout: 'readonly',
+          crypto: 'readonly',
+          console: 'readonly',
+          Buffer: 'readonly',
+          NodeJS: 'readonly',
+          __dirname: 'readonly',
+          __filename: 'readonly',
+        },
+        rules: {
+          'typescript/no-explicit-any': 'off',
+          'typescript/no-unsafe-type-assertion': 'off',
+        },
+      },
     ],
   },
 })
