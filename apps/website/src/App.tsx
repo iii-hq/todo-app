@@ -1,42 +1,22 @@
 import { Button, Card, Checkbox, Chip, Input, Label } from '@heroui/react'
 import type React from 'react'
 import { useState } from 'react'
-
-interface Todo {
-  id: number
-  text: string
-  completed: boolean
-}
+import { useTodos } from './hooks/use-todos'
 
 export default function App() {
-  const [todos, setTodos] = useState<Todo[]>([])
+  const { todos, addTodo, toggleTodo, deleteTodo, clearCompleted, remaining, completedCount } = useTodos()
   const [input, setInput] = useState('')
 
-  const addTodo = () => {
-    const text = input.trim()
-    if (!text) return
-    setTodos((prev) => [...prev, { id: Date.now(), text, completed: false }])
+  const handleAdd = () => {
+    const title = input.trim()
+    if (!title) return
+    addTodo(title)
     setInput('')
   }
 
-  const toggleTodo = (id: number) => {
-    setTodos((prev) => prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)))
-  }
-
-  const deleteTodo = (id: number) => {
-    setTodos((prev) => prev.filter((t) => t.id !== id))
-  }
-
-  const clearCompleted = () => {
-    setTodos((prev) => prev.filter((t) => !t.completed))
-  }
-
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') addTodo()
+    if (e.key === 'Enter') handleAdd()
   }
-
-  const remaining = todos.filter((t) => !t.completed).length
-  const completedCount = todos.filter((t) => t.completed).length
 
   return (
     <div className="mx-auto flex min-h-svh max-w-xl flex-col px-4 py-12">
@@ -70,7 +50,7 @@ export default function App() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
             />
-            <Button onPress={addTodo} isDisabled={!input.trim()}>
+            <Button onPress={handleAdd} isDisabled={!input.trim()}>
               Add
             </Button>
           </div>
@@ -96,7 +76,7 @@ export default function App() {
                             todo.completed ? 'line-through opacity-50 transition-opacity' : 'transition-opacity'
                           }
                         >
-                          {todo.text}
+                          {todo.title}
                         </Label>
                       </Checkbox.Content>
                     </Checkbox>
@@ -105,7 +85,7 @@ export default function App() {
                       variant="ghost"
                       size="sm"
                       isIconOnly
-                      aria-label={`Delete ${todo.text}`}
+                      aria-label={`Delete ${todo.title}`}
                       onPress={() => deleteTodo(todo.id)}
                       className="ml-auto cursor-pointer"
                     >

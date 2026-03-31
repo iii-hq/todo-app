@@ -13,6 +13,7 @@ modules:
           - match("todos::list")
           - match("todos::get")
           - match("todos::delete")
+          - match("todos::toggle")
 
   - class: modules::shell::ExecModule
     config:

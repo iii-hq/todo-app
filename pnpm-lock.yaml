@@ -12,6 +12,9 @@ catalogs:
     '@heroui/styles':
       specifier: ^3.0.1
       version: 3.0.1
+    '@motiadev/stream-client-react':
+      specifier: 0.17.14-beta.196
+      version: 0.17.14-beta.196
     '@tailwindcss/vite':
       specifier: ^4.2.2
       version: 4.2.2
@@ -27,6 +30,9 @@ catalogs:
     '@vitejs/plugin-react':
       specifier: ^6.0.1
       version: 6.0.1
+    iii-browser-sdk:
+      specifier: 0.10.0-beta.1
+      version: 0.10.0-beta.1
     react:
       specifier: ^19.2.4
       version: 19.2.4
@@ -82,6 +88,12 @@ importers:
       '@heroui/styles':
         specifier: 'catalog:'
         version: 3.0.1(tailwind-merge@3.4.0)(tailwindcss@4.2.2)
+      '@motiadev/stream-client-react':
+        specifier: 'catalog:'
+        version: 0.17.14-beta.196(react@19.2.4)
+      iii-browser-sdk:
+        specifier: 'catalog:'
+        version: 0.10.0-beta.1
       react:
         specifier: 'catalog:'
         version: 19.2.4
@@ -353,6 +365,17 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@motiadev/stream-client-browser@0.17.14-beta.196':
+    resolution: {integrity: sha512-X2isevw/Jg7KALDa7MjWBQqWYvgyWdIqHgL4X1k5bX+nUDgeEYXk20H0sPpTRA5z37uXwoS9jqpFIFgIzpLm9A==}
+
+  '@motiadev/stream-client-react@0.17.14-beta.196':
+    resolution: {integrity: sha512-SJdAFRSgUE+vd9KyPYdW9isRIbya0xgV73eQ87Cbk+Hzfc3rW0jjH0YFHcFaArvBd0/sIus4j9+zp/oi3V8nxw==}
+    peerDependencies:
+      react: ^19.2.3
+
+  '@motiadev/stream-client@0.17.14-beta.196':
+    resolution: {integrity: sha512-+P/Dpl6WndLi+OgW09hRNX2fLLfReh7EY9UQvbv9AMvpU/TxN2SkuJ4EBiX0CnMFquALs1MTtbi1HrlcVvZpgA==}
 
   '@napi-rs/wasm-runtime@1.1.2':
     resolution: {integrity: sha512-sNXv5oLJ7ob93xkZ1XnxisYhGYXfaG9f65/ZgYuAu3qt7b3NadcOEhLvx28hv31PgX8SZJRYrAIPQilQmFpLVw==}
@@ -1942,6 +1965,9 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
+  iii-browser-sdk@0.10.0-beta.1:
+    resolution: {integrity: sha512-ksZ9TUYMU3zJDORCUBggjRJvSK9aSdcGGo+qumenTwriAfbHdAL0UgPC5JfLA74dQP/QT0oMf89iU0gS/9nQzQ==}
+
   iii-sdk@0.10.0:
     resolution: {integrity: sha512-suXrgWcVh7hel3a7ylOfttrVzHxi+OJlhWtHDdKra5HU9nqpmIsRc55qFuHB34GTeNWPq3HisEYW+1+7vX+GUA==}
 
@@ -2278,6 +2304,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
+  uuid@13.0.0:
+    resolution: {integrity: sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w==}
+    hasBin: true
+
   vite-plus@0.1.14:
     resolution: {integrity: sha512-p4pWlpZZNiEsHxPWNdeIU9iuPix3ydm3ficb0dXPggoyIkdotfXtvn2NPX9KwfiQImU72EVEs4+VYBZYNcUYrw==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -2534,6 +2564,20 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@motiadev/stream-client-browser@0.17.14-beta.196':
+    dependencies:
+      '@motiadev/stream-client': 0.17.14-beta.196
+      uuid: 13.0.0
+
+  '@motiadev/stream-client-react@0.17.14-beta.196(react@19.2.4)':
+    dependencies:
+      '@motiadev/stream-client-browser': 0.17.14-beta.196
+      react: 19.2.4
+
+  '@motiadev/stream-client@0.17.14-beta.196':
+    dependencies:
+      uuid: 13.0.0
 
   '@napi-rs/wasm-runtime@1.1.2(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)':
     dependencies:
@@ -4426,6 +4470,8 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
+  iii-browser-sdk@0.10.0-beta.1: {}
+
   iii-sdk@0.10.0:
     dependencies:
       '@opentelemetry/api': 1.9.1
@@ -4876,6 +4922,8 @@ snapshots:
   use-sync-external-store@1.6.0(react@19.2.4):
     dependencies:
       react: 19.2.4
+
+  uuid@13.0.0: {}
 
   vite-plus@0.1.14(@opentelemetry/api@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(tsx@4.21.0)(typescript@5.9.3)(vite@8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3):
     dependencies:

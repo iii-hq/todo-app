@@ -6,11 +6,13 @@ packages:
 catalog:
   '@heroui/react': ^3.0.1
   '@heroui/styles': ^3.0.1
+  '@motiadev/stream-client-react': 0.17.14-beta.196
   '@tailwindcss/vite': ^4.2.2
   '@types/node': ^24
   '@types/react': ^19.2.14
   '@types/react-dom': ^19.2.3
   '@vitejs/plugin-react': ^6.0.1
+  iii-browser-sdk: 0.10.0-beta.1
   react: ^19.2.4
   react-dom: ^19.2.4
   tailwindcss: ^4.2.2

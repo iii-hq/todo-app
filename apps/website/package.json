@@ -11,6 +11,8 @@
   "dependencies": {
     "@heroui/react": "catalog:",
     "@heroui/styles": "catalog:",
+    "@motiadev/stream-client-react": "catalog:",
+    "iii-browser-sdk": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
