@@ -27,3 +27,5 @@ dist-ssr
 .claude/worktrees/
 
 .DS_Store
+
+apps/api/data/
