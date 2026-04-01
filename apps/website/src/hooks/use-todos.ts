@@ -20,16 +20,14 @@ export function useTodos() {
       .then(({ items }) => setTodos(items))
 
     const funcRef = iii.registerFunction({ id: 'ui::on-todo-change' }, async (input: StreamChangeEvent) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
       const todo = input.event.data as Todo
-
-      console.log('on-todo-change', input)
 
       switch (input.event.type) {
         case 'create':
           setTodos((prev) => [...prev, todo])
           break
         case 'update':
-          console.log('update-todo', input)
           setTodos((prev) => prev.map((t) => (t.id === input.id ? todo : t)))
           break
         case 'delete':

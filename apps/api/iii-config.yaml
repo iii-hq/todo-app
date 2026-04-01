@@ -8,6 +8,7 @@ modules:
       host: 0.0.0.0
       port: 3111
       rbac:
+        auth_function_id: todo-project::auth-function
         expose_functions:
           - match("todos::create")
           - match("todos::list")

@@ -9,7 +9,7 @@ export const toggleTodo = fn(
 
     const item = await todosStream.get({ group_id: 'todos', item_id: req.id })
     if (!item) {
-      console.log('Todo not found', { id: req.id })
+      logger.warn('Todo not found', { id: req.id })
       return null
     }
 

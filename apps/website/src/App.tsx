@@ -10,7 +10,9 @@ export default function App() {
   const handleAdd = () => {
     const title = input.trim()
     if (!title) return
-    addTodo(title)
+    addTodo(title).catch((error) => {
+      console.error('Error adding todo', error)
+    })
     setInput('')
   }
 

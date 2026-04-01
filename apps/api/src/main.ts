@@ -1,4 +1,7 @@
+import './lib/rbac.ts'
 import './routes/todos.create.ts'
 import './routes/todos.stream.ts'
 import './routes/todos.toggle.ts'
-import './routes/todos.ts'
+import './routes/todos.list.ts'
+import './routes/todos.get.ts'
+import './routes/todos.delete.ts'
