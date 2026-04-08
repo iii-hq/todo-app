@@ -283,8 +283,6 @@ todo-app/
 │       │   └── lib/
 │       │       └── iii.ts          # Browser worker registration
 │       └── package.json
-├── packages/
-│   └── utils/                  # Shared utilities library
 ├── package.json                # Monorepo root
 ├── pnpm-workspace.yaml         # pnpm workspace config
 └── vite.config.ts              # Vite+ root config (lint, fmt)

@@ -12,7 +12,7 @@ export interface FnRegistration {
 }
 
 export function fn(id: string, handler: RemoteFunctionHandler, options?: FnOptions): FnRegistration {
-  const ref = iii.registerFunction({ id, description: options?.description ?? '' }, handler)
+  const ref = iii.registerFunction(id, handler, options)
   const triggers: Trigger[] = []
 
   const registration: FnRegistration = {

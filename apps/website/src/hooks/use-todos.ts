@@ -19,7 +19,7 @@ export function useTodos() {
       })
       .then(({ items }) => setTodos(items))
 
-    const funcRef = iii.registerFunction({ id: 'ui::on-todo-change' }, async (input: StreamChangeEvent) => {
+    const funcRef = iii.registerFunction('ui::on-todo-change', async (input: StreamChangeEvent) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
       const todo = input.event.data as Todo
 
