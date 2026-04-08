@@ -1,9 +1,9 @@
-modules:
-  - class: modules::worker::WorkerModule
+workers:
+  - name: iii-worker-manager
     config:
       port: 49134
 
-  - class: modules::worker::WorkerModule
+  - name: iii-worker-manager
     config:
       host: 0.0.0.0
       port: 3111
@@ -16,22 +16,22 @@ modules:
           - match("todos::delete")
           - match("todos::toggle")
 
-  - class: modules::shell::ExecModule
+  - name: iii-exec
     config:
       exec:
         - pnpm dev
 
-  - class: modules::stream::StreamModule
+  - name: iii-stream
     config:
       port: 3112
       host: 0.0.0.0
       adapter:
-        class: modules::stream::adapters::KvStore
+        name: kv
         config:
           store_method: file_based
           file_path: ./data/stream_store
 
-  - class: modules::observability::OtelModule
+  - name: iii-observability
     config:
       enabled: ${OTEL_ENABLED:true}
       service_name: ${OTEL_SERVICE_NAME:iii-test}
